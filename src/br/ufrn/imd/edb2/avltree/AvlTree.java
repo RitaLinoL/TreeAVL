@@ -39,29 +39,40 @@ public class AvlTree<Value extends Indexable> {
                 //LL
                 return rotateRight(node);
             }else{
-                //RR
-                return
+                //LR
+                node.setLeft(rotateLeft(node.getLeft()));
+                return rotateRight(node);
 
             }
 
         }else{
             //R
             if(node.getRight().getBalanceFactor() > 0){
-                //R
-
+                //RR
+                return rotateLeft(node);
             }else{
-                //L
+                //RL
+                node.setRight(rotateRight(node.getRight()));
+                return rotateLeft(node);
+
 
             }
         }
 
-        return null;
     }
 
-    private Node<Value> rotateRight(Node <Value> node){
-        Node<Value> newRoot = node.getLeft();
-        node.setLeft(newRoot.getRight());
-        newRoot.setRight(node);
+    private Node<Value> rotateRight(Node <Value> oldRoot){
+        Node<Value> newRoot = oldRoot.getLeft();
+        oldRoot.setLeft(newRoot.getRight());
+        newRoot.setRight(oldRoot);
+
+        return newRoot;
+    }
+
+    private Node<Value> rotateLeft(Node <Value> oldRoot){
+        Node<Value> newRoot = oldRoot.getRight();
+        oldRoot.setRight(newRoot.getLeft());
+        newRoot.setLeft(oldRoot);
 
         return newRoot;
     }
