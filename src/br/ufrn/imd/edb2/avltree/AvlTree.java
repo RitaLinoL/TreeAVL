@@ -3,6 +3,13 @@ package br.ufrn.imd.edb2.avltree;
 public class AvlTree<Value extends Indexable> {
     private Node<Value> root;
 
+    public boolean isBalanced(){
+        if (root == null){
+            return true;
+        }
+        return Math.abs(root.getBalanceFactor()) <=1;
+    }
+
     public void insert(Value value) {
         this.root = insert(new Node<Value>(value), root);
     }
@@ -65,7 +72,6 @@ public class AvlTree<Value extends Indexable> {
         Node<Value> newRoot = oldRoot.getLeft();
         oldRoot.setLeft(newRoot.getRight());
         newRoot.setRight(oldRoot);
-
         return newRoot;
     }
 
