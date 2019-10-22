@@ -1,4 +1,4 @@
-package br.imd.ufrn.tree.interfaces;
+package br.com.waldson.aula15;
 
 public interface Indexable {
     int getKey();
