@@ -1,4 +1,4 @@
-package br.com.waldson.aula15;
+package br.ufrn.imd.edb2.avltree;
 
 public class Main {
 
