@@ -1,4 +1,4 @@
-package br.ufrn.imd.edb2.avltree;
+package br.com.waldson.aula15;
 
 public class Node<Value extends Indexable> {
     Value value;
@@ -33,27 +33,24 @@ public class Node<Value extends Indexable> {
         this.right = right;
     }
 
-    public int getBalanceFactor(){
-        int leftHeight = getLeft() == null? 0: 1 + getLeft().getHeight();
-        int rightHeight = getRight() == null? 0 : 1 + getRight().getHeight();
+    public int getBalanceFactor() {
+        int leftHeight  = getLeft() == null ? 0 : 1 + getLeft().getHeight();
+        int rightHeight = getRight() == null ? 0 : 1 + getRight().getHeight();
 
         return leftHeight - rightHeight;
     }
 
-
-
-    public int getHeight(){
-        if (getLeft() == null && getRight() == null){
+    public int getHeight() {
+        if (getLeft() == null && getRight() == null) {
             return 0;
         }
+        if (getLeft() == null) {
+            return 1 + getRight().getHeight();
+        }
+        if (getRight() == null) {
+            return 1 + getLeft().getHeight();
+        }
 
-        if (getLeft() == null){
-            return 1+ getRight().getHeight();
-        }
-        if (getRight() == null ){
-            return 1+ getLeft().getHeight();
-        }
         return Math.max(1 + getLeft().getHeight(), 1 + getRight().getHeight());
     }
-
 }

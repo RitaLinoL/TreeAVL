@@ -1,4 +1,4 @@
-package br.ufrn.imd.edb2.avltree;
+package br.com.waldson.aula15;
 
 public class Time implements Indexable {
 
